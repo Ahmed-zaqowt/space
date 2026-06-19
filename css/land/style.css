@@ -1,0 +1,395 @@
+@font-face {
+    font-family: "Milan";
+    src: url("../../fonts/Milan-Display-Black.otf") format("opentype");
+    font-weight: 900;
+    font-style: normal;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  background: #000;
+}
+
+.screen,
+.space {
+  width: 100vw;
+  height: 100vh;
+}
+
+.solar-system{
+  position: relative;
+
+  width: 600px;
+  height: 600px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transform-origin: center;
+}
+
+.space {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+
+    display: flex;
+  justify-content: center;  /* أفقي */
+  align-items: center;
+  background:
+    radial-gradient(circle at center, rgba(20, 20, 50, 0.55), rgba(0, 0, 0, 1) 60%),
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05) 0 1px, transparent 1px),
+    radial-gradient(circle at 80% 30%, rgba(255,255,255,0.05) 0 1px, transparent 1px),
+    radial-gradient(circle at 30% 75%, rgba(255,255,255,0.05) 0 1px, transparent 1px),
+    #000;
+  isolation: isolate;
+}
+
+/* SUN */
+.sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 86px;
+  height: 86px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, #fff3b0 0%, #ffd166 18%, #ff8c00 55%, #c94c00 100%);
+  box-shadow:
+    0 0 25px rgba(255, 200, 60, 0.9),
+    0 0 60px rgba(255, 160, 30, 0.75),
+    0 0 120px rgba(255, 130, 0, 0.35);
+}
+
+.sun::after {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,180,50,0.22), transparent 70%);
+  filter: blur(2px);
+}
+
+
+.solar-system{
+  width: min(90vmin, 600px);
+  height: min(90vmin, 600px);
+}
+
+
+/* ORBIT WRAP */
+.orbit-wrap {
+  position: absolute;
+   position: absolute;
+  inset: 0;
+  margin: auto;
+  width: var(--size);
+  height: var(--size);
+
+}
+
+/* ORBITS */
+.orbit {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 50%;
+  animation: rotate var(--duration) linear infinite;
+  box-shadow: 0 0 18px rgba(255,255,255,0.03) inset;
+}
+
+.orbit::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  box-shadow:
+    0 0 14px rgba(255,255,255,0.03),
+    0 0 36px rgba(120, 160, 255, 0.04);
+}
+
+/* ثابت على المدار */
+/* ORBIT LABEL */
+.orbit-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: rgba(255,255,255,0.92);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-shadow: 0 0 6px rgba(255,255,255,0.18);
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--label-angle))
+    translateY(calc(var(--size) / -2 + 16px))
+    rotate(calc(-1 * var(--label-angle)));
+  pointer-events: none;
+  white-space: nowrap;
+  background: transparent;
+  border: none;
+  backdrop-filter: none;
+  padding: 0;
+}
+
+.planet {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  cursor: pointer;
+  will-change: transform, box-shadow;
+}
+
+/* Moon */
+.moon {
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle at 30% 30%, #ffffff, #dfe7fd 55%, #9fb3d9 100%);
+  box-shadow: 0 0 6px rgba(255,255,255,0.55), 0 0 12px rgba(210,225,255,0.25);
+}
+.saturn{
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:26px;
+    height:26px;
+    border-radius:50%;
+
+    background:
+      radial-gradient(circle at 30% 30%,
+      #ffe0b2,
+      #f4a261 60%,
+      #b85c18 100%);
+
+    box-shadow:
+      0 0 8px rgba(244,162,97,.35);
+}
+
+.saturn-rings{
+    position:absolute;
+    left:50%;
+    top:50%;
+
+    width:58px;
+    height:18px;
+
+    border:2px solid rgba(255,230,190,.75);
+    border-radius:50%;
+
+    transform:
+      translate(-50%,-50%)
+      rotate(-25deg);
+
+    pointer-events:none;
+}
+
+
+
+.rita {
+  width: 22px;
+  height: 22px;
+  background: radial-gradient(circle at 30% 30%, #ffd6e0, #ff4d6d 45%, #7b2cbf 100%);
+  box-shadow: 0 0 10px rgba(255, 77, 109, 0.5), 0 0 22px rgba(123, 44, 191, 0.28);
+}
+
+.neptune {
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle at 30% 30%, #c9f3ff, #4cc9f0 55%, #186e9c 100%);
+  box-shadow: 0 0 8px rgba(76,201,240,0.5), 0 0 18px rgba(76,201,240,0.2);
+}
+
+.mars {
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle at 30% 30%, #ffb4b4, #e63946 55%, #8b1e27 100%);
+  box-shadow: 0 0 8px rgba(230,57,70,0.5), 0 0 16px rgba(230,57,70,0.2);
+}
+
+
+/* animation */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* INFO */
+.info {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  text-shadow: 0 0 12px rgba(255,255,255,0.35);
+}
+
+.moon{
+  filter: drop-shadow(0 0 4px rgba(255,255,255,.4));
+}
+
+.saturn{
+  filter: drop-shadow(0 0 4px rgba(244,162,97,.4));
+}
+
+.rita{
+  filter: drop-shadow(0 0 5px rgba(255,77,109,.5));
+}
+
+.neptune{
+  filter: drop-shadow(0 0 4px rgba(76,201,240,.4));
+}
+
+.mars{
+  filter: drop-shadow(0 0 4px rgba(230,57,70,.4));
+}
+.voice-area{
+  position: absolute;
+  left: 50%;
+ 
+  bottom: 20px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  color: white;
+  text-align: center;
+  z-index: 20;
+}
+
+.voice-player{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.play-btn{
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.95);
+  font-size: 26px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  min-width: 28px;
+}
+
+.waves{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 26px;
+}
+
+.waves span{
+  width: 3px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+  transform-origin: bottom;
+  opacity: 0.35;
+}
+
+.waves.animating span{
+  animation: wave 0.8s ease-in-out infinite;
+}
+
+.waves.animating span:nth-child(2){ animation-delay: 0.1s; }
+.waves.animating span:nth-child(3){ animation-delay: 0.2s; }
+.waves.animating span:nth-child(4){ animation-delay: 0.3s; }
+.waves.animating span:nth-child(5){ animation-delay: 0.4s; }
+
+@keyframes wave{
+  0%, 100% { transform: scaleY(0.35); opacity: 0.35; }
+  50% { transform: scaleY(1.8); opacity: 1; }
+}
+
+.voice-duration{
+  color: rgba(255,255,255,.8);
+  font-size: 14px;
+  letter-spacing: .5px;
+  min-width: 45px;
+  text-align: center;
+}
+
+.voice-text{
+   font-family: "Milan", sans-serif;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 560px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.15);
+}
+
+
+/* MOBILE OPTIMIZATION */
+
+.voice-area{
+    width: min(90vw, 650px);
+    padding-inline: 16px;
+}
+
+.voice-text{
+    font-size: clamp(14px, 3vw, 20px);
+    line-height: 1.8;
+    max-width: 100%;
+}
+
+.voice-player{
+    gap: clamp(8px, 2vw, 14px);
+}
+
+.play-btn{
+    font-size: clamp(22px, 5vw, 28px);
+}
+
+.voice-duration{
+    font-size: clamp(12px, 2.8vw, 15px);
+}
+
+
+@media (max-width: 768px){
+
+    .voice-area{
+        bottom: 35px;
+        gap: 10px;
+    }
+
+    .voice-text{
+        max-width: 320px;
+        font-size: 15px;
+    }
+
+    .orbit-label{
+        font-size: 11px;
+    }
+
+    .sun{
+        width: 72px;
+        height: 72px;
+    }
+}
+
+@media (max-width: 768px){
+
+    .orbit1-wrap{ --size:110px !important; }
+    .orbit2-wrap{ --size:180px !important; }
+    .orbit3-wrap{ --size:250px !important; }
+    .orbit4-wrap{ --size:320px !important; }
+    .orbit5-wrap{ --size:390px !important; }
+
+}

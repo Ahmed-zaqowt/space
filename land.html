@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galaxy Login</title>
+    <link rel="stylesheet" href="css/land/style.css">
+</head>
+
+<body>
+
+    <div id="planetScreen" class="screen">
+        <div class="space">
+
+          <div class="solar-system">
+
+            <div class="sun"></div>
+
+            <div class="orbit-wrap orbit1-wrap" style="--size:140px; --duration:80s; --label-angle:-25deg;">
+                <div class="orbit orbit1">
+                    <div class="planet moon" onclick="selectPlanet('القمر')"></div>
+                </div>
+                <div class="orbit-label">القمر</div>
+            </div>
+
+            <div class="orbit-wrap orbit2-wrap" style="--size:220px; --duration:130s; --label-angle:-20deg;">
+                <div class="orbit orbit2">
+                    <div class="planet saturn">
+                        <div class="saturn-rings"></div>
+                    </div>
+                </div>
+                <div class="orbit-label">زحل</div>
+            </div>
+
+            <div class="orbit-wrap orbit3-wrap" style="--size:300px; --duration:180s; --label-angle:-18deg;">
+                <div class="orbit orbit3">
+                    <div class="planet rita" onclick="selectPlanet('ريتا')"></div>
+                </div>
+                <div class="orbit-label">ريتا</div>
+            </div>
+
+            <div class="orbit-wrap orbit4-wrap" style="--size:380px; --duration:240s; --label-angle:-16deg;">
+                <div class="orbit orbit4">
+                    <div class="planet neptune" onclick="selectPlanet('نبتون')"></div>
+                </div>
+                <div class="orbit-label">نبتون</div>
+            </div>
+
+            <div class="orbit-wrap orbit5-wrap" style="--size:460px; --duration:320s; --label-angle:-14deg;">
+                <div class="orbit orbit5">
+                    <div class="planet mars" onclick="selectPlanet('المريخ')"></div>
+                </div>
+                <div class="orbit-label">المريخ</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div id="info" class="info"></div>
+
+        <div class="voice-area">
+            <div class="voice-player">
+                <div class="waves" id="waves">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <span class="voice-duration" id="duration">00:00</span>
+
+                <button class="play-btn" id="playBtn">▶</button>
+
+                <audio id="voiceAudio" src="audio/a.mp3"></audio>
+            </div>
+
+            <p class="voice-text">
+                مهما ابتعدت المسافات، يبقى حضورك الأقرب إلى قلبي من أي شيء آخر.
+            </p>
+        </div>
+    </div>
+
+    <script src="js/land/app.js"></script>
+</body>
+
+</html>
