@@ -5,61 +5,406 @@ const memories = [
   {
     id: 1,
     kind: "star",
-    type: "text",
-    title: "ليلة أول رسالة",
+    type: "image",
+    title: "أنت نكهة الحياة الجميلة",
     date: "2026-05-21",
-    message: "كنتِ أول من جعل للسماء معنى مختلفًا.",
+    message:
+      "كنتِ أول من جعل للحياة معنى مختلفًا، جعلتِ قلبي يزهر وينبض، وجعلتِ أيامي مليانة ورد وأمل، أنا بحبك وممنون للحظة اللي عرفتك فيها.",
+    image: "images/fr.jpg",
   },
+
   {
     id: 2,
     kind: "star",
-    type: "text",
-    title: "اشتقت لك",
-    date: "2026-05-25",
-    message: "كل مساء، أترك نجمة صغيرة لتعودي إليها.",
+    type: "image",
+    title: "يا عمري إنتِ",
+    date: "2026-06-1",
+    message:
+      "يا ريتا، إنتِ مش بس حبيبتي، إنتِ الروح اللي بترتب وجعي، والفرحة اللي بترجعلي قلبي كل ما تعب.",
+    image: "images/chat.jpg",
   },
   {
     id: 3,
-    kind: "planet",
-    type: "audio",
-    title: "صوتك وقت المطر",
-    date: "2026-05-11",
-    message: "تسجيل صوتي قصير يهدّئ قلبي كلما اشتقت.",
+    kind: "star",
+    type: "image",
+    title: "ضحكتك وطن",
+    date: "2026-05-23",
+    message:
+      "ضحكتك يا ريتا بتطمن قلبي، وبتحسسني إن الدنيا لسه بخير، وكأنها وطن صغير بلجأله من تعب الأيام.",
+    image: "images/us.png",
   },
   {
     id: 4,
     kind: "star",
-    type: "text",
-    title: "وعد صغير",
-    date: "2026-06-08",
-    message: "كل ليلة، هناك نجمة أعرف أنها لك.",
+    type: "image",
+    title: "قلبك الحلو",
+    date: "2026-05-24",
+    message:
+      "يا أغلى من روحي، قلبك الحلو علّمني معنى الطيبة، ومعك حسّيت إن الحب مش بس كلام، الحب فعل وحنان وسكينة.",
+    image: "images/stud.jpg",
   },
   {
     id: 5,
-    kind: "shooting",
-    type: "video",
-    title: "ذكرى الشهادة",
-    date: "2026-04-03",
-    message: "لحظة فخر لا تُنسى، كأنها شهاب مرّ في حياتنا.",
+    kind: "star",
+    type: "image",
+    title: "أحلى صدفة",
+    date: "2026-05-25",
+    message:
+      "أنا كل يوم بحمد ربنا على الصدفة اللي جمعتني فيكِ، لأن وجودك بحياتي صار أجمل من كل الأحلام اللي تخيلتها.",
+    image: "images/j.jpg",
   },
   {
     id: 6,
-    kind: "planet",
+    kind: "star",
     type: "image",
-    title: "صورة الغروب",
-    date: "2026-06-02",
-    message: "صورة التقطت عند الغروب حين قلتِ: كل شيء صار أهدأ.",
+    title: "نور عيوني",
+    date: "2026-05-26",
+    message:
+      "إنتِ نور عيوني وراحة قلبي، وكل ما بتبعيتيلي كلمة بحس الدنيا كلها صارت أهدى وأحلى.",
+    image: "images/rit1.jpg",
   },
+  {
+    id: 7,
+    kind: "star",
+    type: "image",
+    title: "يا ملاكي",
+    date: "2026-05-27",
+    message:
+      "يا ملاكي، وجودك بحياتي بيخليني أحس إني أغنى إنسان بالعالم، لأن عندي قلبك وحنانك ودعواتك.",
+    image: "images/us2.jpg",
+  },
+  {
+    id: 8,
+    kind: "star",
+    type: "text",
+    title: "أغلى من الدنيا",
+    date: "2026-05-28",
+    message:
+      "إنتِ عندي أغلى من الدنيا كلها، وأهم من كل التفاصيل، ومعك كل لحظة بتصير إلها طعم أحلى.",
+  },
+
+
+
+   {
+    id: 9,
+    kind: "star",
+    type: "text",
+    title: "سكن قلبي",
+    date: "2026-05-29",
+    message: "من يوم ما عرفتكِ، صار قلبي إلكِ سكن، وصرتِ إنتِ المكان الوحيد اللي بارتاح فيه بدون ما أحكي.",
+    image: "images/us.png"
+  },
+  {
+    id: 10,
+    kind: "star",
+    type: "text",
+    title: "حبيبة الروح",
+    date: "2026-05-30",
+    message: "يا حبيبة الروح، أنا ما بعرف كيف أوصفك، بس بعرف إنك أجمل نعمة دخلت حياتي وما بدي أخسرها أبدًا.",
+    image: "images/us.png"
+  },
+  {
+    id: 11,
+    kind: "star",
+    type: "text",
+    title: "إنتِ الأمان",
+    date: "2026-05-31",
+    message: "معك بحس بالأمان، وبحس إن الدنيا مهما كانت قاسية، في حدا قادر يهوّن عليّ التعب بابتسامة.",
+    image: "images/us.png"
+  },
+  {
+    id: 12,
+    kind: "star",
+    type: "text",
+    title: "روحي وإنتِ",
+    date: "2026-06-01",
+    message: "روحي بتحبك بطريقة ما بتنحكى، حب صادق ونظيف، حب كل يوم بزيد وما بنقص.",
+    image: "images/us.png"
+  },
+  {
+    id: 13,
+    kind: "star",
+    type: "text",
+    title: "يا وردة قلبي",
+    date: "2026-06-02",
+    message: "يا وردة قلبي، إنتِ أحلى من كل الورد، وألطف من كل الكلام، ووجودك بعمري هدية من السما.",
+    image: "images/us.png"
+  },
+  {
+    id: 14,
+    kind: "star",
+    type: "text",
+    title: "كل الحكاية إنتِ",
+    date: "2026-06-03",
+    message: "كل الحكاية يا ريتا إنك صرتِ أجمل جزء بحياتي، وكل شيء قبلك وبعدك صار إله معنى مختلف.",
+    image: "images/us.png"
+  },
+  {
+    id: 15,
+    kind: "star",
+    type: "text",
+    title: "حب ما إله حدود",
+    date: "2026-06-04",
+    message: "بحبك حب ما إله حدود، حب بيوصل لآخر نبضة بقلبي، وبيكبر كل يوم لأنك إنتِ السبب.",
+    image: "images/us.png"
+  },
+  {
+    id: 16,
+    kind: "star",
+    type: "text",
+    title: "عينك الحلوة",
+    date: "2026-06-05",
+    message: "في عيونك الحلوة بلاقيني، وبنظرتك بعيش أحلى لحظات عمري، كأن الدنيا كلها بتبتسم إلي.",
+    image: "images/us.png"
+  },
+  {
+    id: 17,
+    kind: "star",
+    type: "text",
+    title: "مشتاقلك",
+    date: "2026-06-06",
+    message: "مشتاقلك بطريقة بتتعب قلبي، وبحس إن غيابك حتى لو كان بسيط، بخليني أفتقد كل شي حلو.",
+    image: "images/us.png"
+  },
+  {
+    id: 18,
+    kind: "star",
+    type: "text",
+    title: "انتِ الحنية",
+    date: "2026-06-07",
+    message: "إنتِ الحنية اللي ما كنت أعرف إنها ممكن تكون بهالشكل، والدفا اللي بدّي يضل معي طول العمر.",
+    image: "images/us.png"
+  },
+  {
+    id: 19,
+    kind: "star",
+    type: "text",
+    title: "حلوة الأيام",
+    date: "2026-06-08",
+    message: "معك صارت الأيام أحلى، وصار الصبح أهون، وصار الليل أهدى، لأنك موجودة بقلبي بكل وقت.",
+    image: "images/us.png"
+  },
+  {
+    id: 20,
+    kind: "star",
+    type: "text",
+    title: "أنتِ الحلم",
+    date: "2026-06-09",
+    message: "يا ريتا، أحيانًا بحس إنك حلم لطيف ربنا بعثه إلي، وبخاف أصحى من جمالك.",
+    image: "images/us.png"
+  },
+  {
+    id: 21,
+    kind: "star",
+    type: "text",
+    title: "يا سبب ابتسامتي",
+    date: "2026-06-10",
+    message: "إنتِ سبب ابتسامتي، وحتى لما أكون مضايق، بترجعيلي روحي بكلمتين حلوين منك.",
+    image: "images/us.png"
+  },
+  {
+    id: 22,
+    kind: "star",
+    type: "text",
+    title: "قلبي إلك",
+    date: "2026-06-11",
+    message: "قلبي من أول ما عرفك اختارك، ومن وقتها صار ما بده غيرك، ولا بيسمع غير صوتك.",
+    image: "images/us.png"
+  },
+  {
+    id: 23,
+    kind: "star",
+    type: "text",
+    title: "أحلى من الخيال",
+    date: "2026-06-12",
+    message: "إنتِ أحلى من الخيال، وأجمل من أي وصف، وكل مرة بشوفك بحس إني أول مرة بعشق.",
+    image: "images/us.png"
+  },
+  {
+    id: 24,
+    kind: "star",
+    type: "text",
+    title: "نبضي فيك",
+    date: "2026-06-13",
+    message: "نبضي فيكِ، وراحتي في صوتكِ، وعمري بوجودك، وإنتِ كل شي حلو بلّش فيني من يوم عرفتك.",
+    image: "images/us.png"
+  },
+  {
+    id: 25,
+    kind: "star",
+    type: "text",
+    title: "يا ست البنات",
+    date: "2026-06-14",
+    message: "يا ست البنات، إنتِ مميزة بكل تفصيلة، وبكفّي إنك إنتِ حتى يصير اليوم أجمل.",
+    image: "images/us.png"
+  },
+  {
+    id: 26,
+    kind: "star",
+    type: "text",
+    title: "قربك حياة",
+    date: "2026-06-15",
+    message: "قربك حياة، وبعدك وجع بسيط، ومعك الدنيا بتصير أهون من أي وقت مضى.",
+    image: "images/us.png"
+  },
+  {
+    id: 27,
+    kind: "star",
+    type: "text",
+    title: "ريحة القلب",
+    date: "2026-06-16",
+    message: "إنتِ متل ريحة القلب، شي ما بينوصف بس بينحس، وكل ما قربتي مني حسّيت بالطمأنينة.",
+    image: "images/us.png"
+  },
+  {
+    id: 28,
+    kind: "star",
+    type: "text",
+    title: "غلا ما بينوصف",
+    date: "2026-06-17",
+    message: "غلاك يا ريتا ما بينوصف، لأنك سكنتِ جوّا قلبي بطريقة ما بدي إلها نهاية أبدًا.",
+    image: "images/us.png"
+  },
+  {
+    id: 29,
+    kind: "star",
+    type: "text",
+    title: "ضحكتك بتكفيني",
+    date: "2026-06-18",
+    message: "بتكفيني ضحكتك عن ألف كلام، وبتكفيني نظرة منك حتى أنسى كل التعب اللي بمر فيه.",
+    image: "images/us.png"
+  },
+  {
+    id: 30,
+    kind: "star",
+    type: "text",
+    title: "أنتِ أغلى تفاصيل",
+    date: "2026-06-19",
+    message: "إنتِ من أغلى تفاصيل حياتي، ومن أحلى الأشياء اللي صارت معي، ومن النعم اللي ما بوقف أشكر ربنا عليها.",
+    image: "images/us.png"
+  },
+  {
+    id: 31,
+    kind: "star",
+    type: "text",
+    title: "يا حبيبتي",
+    date: "2026-06-20",
+    message: "يا حبيبتي، أنا أحمد وبحكيها من قلبي: بحبك أكثر مما بتتخيل، وأتمنى تظلي أحلى قصة بعمري.",
+    image: "images/us.png"
+  },
+  {
+    id: 32,
+    kind: "star",
+    type: "text",
+    title: "سحر لطيف",
+    date: "2026-06-21",
+    message: "فيكي سحر لطيف، سحر بيخلي الروح تتعلق، والقلب يهدى، والعين ما تشبع من جمالك.",
+    image: "images/us.png"
+  },
+  {
+    id: 33,
+    kind: "star",
+    type: "text",
+    title: "كل يوم بحبك أكتر",
+    date: "2026-06-22",
+    message: "كل يوم بمر عليّ، بحبك فيه أكتر من اليوم اللي قبله، وكأن قلبي ما بيعرف غير الزيادة في حبك.",
+    image: "images/us.png"
+  },
+  {
+    id: 34,
+    kind: "star",
+    type: "text",
+    title: "إنتِ حكايتي",
+    date: "2026-06-23",
+    message: "إنتِ حكايتي اللي بفتخر فيها، والاسم اللي بمررّره بقلبي بحنية وفخر وحب كبير.",
+    image: "images/us.png"
+  },
+  {
+    id: 35,
+    kind: "star",
+    type: "text",
+    title: "دنياي إنتِ",
+    date: "2026-06-24",
+    message: "دنياي بتصير أحلى لما تكوني فيها، وبصير لكل شيء معنى لأنه إنتِ ضمن التفاصيل.",
+    image: "images/us.png"
+  },
+  {
+    id: 36,
+    kind: "star",
+    type: "text",
+    title: "حضورك غلا",
+    date: "2026-06-25",
+    message: "حضورك غلا، وكلامك راحة، وقلبك وطن، وأنا كل مرة بقرب منك بحمد ربنا على هالنعمة.",
+    image: "images/us.png"
+  },
+  {
+    id: 37,
+    kind: "star",
+    type: "text",
+    title: "أحن قلب",
+    date: "2026-06-26",
+    message: "إنتِ أحن قلب عرفته، وأطيب روح سكنت بحياتي، ومعك صار الحب ألطف وأصدق.",
+    image: "images/us.png"
+  },
+  {
+    id: 38,
+    kind: "star",
+    type: "text",
+    title: "يا نجمة عمري",
+    date: "2026-06-27",
+    message: "يا نجمة عمري، إنتِ اللي بتنوري ليل أيامي، وبتخلي قلبي يمشي وهو مطمّن ومبسوط.",
+    image: "images/us.png"
+  },
+  {
+    id: 39,
+    kind: "star",
+    type: "text",
+    title: "ما بنسى صوتك",
+    date: "2026-06-28",
+    message: "صوتك يا ريتا من الأشياء اللي ما بنساها، لأنه بيفرق فيني كتير وبيخلي روحي مرتاحة.",
+    image: "images/us.png"
+  },
+  {
+    id: 40,
+    kind: "star",
+    type: "text",
+    title: "أنتِ الغلا كله",
+    date: "2026-06-29",
+    message: "إنتِ الغلا كله، وإنتِ الأنس كله، وإنتِ السبب اللي بخلي قلبي يفضل حي ومليان حب.",
+    image: "images/us.png"
+  },
+  {
+    id: 41,
+    kind: "star",
+    type: "text",
+    title: "بدي إياكِ معي",
+    date: "2026-06-30",
+    message: "بدي إياكِ معي بكل تفاصيل الحياة، في الفرح والتعب، بالصمت والكلام، لأن وجودك هو الأجمل.",
+    image: "images/us.png"
+  },
+  {
+    id: 42,
+    kind: "star",
+    type: "text",
+    title: "آخر الكلام حب",
+    date: "2026-07-01",
+    message: "وآخر الكلام يا ريتا، إني بحبك بطريقة صافية وصادقة، وبدي تظلي أجمل شي صار بحياتي.",
+    image: "images/us.png"
+  }
 ];
 
-const discovered = JSON.parse(localStorage.getItem("discoveredMemories") || "{}");
+const discovered = JSON.parse(
+  localStorage.getItem("discoveredMemories") || "{}",
+);
 
 const state = {
   phase: "night",
   selectedMemory: null,
   meditation: false,
   ambient: false,
-  meditationSeconds: Number(localStorage.getItem("ourSkyMeditationSeconds") || 0),
+  meditationSeconds: Number(
+    localStorage.getItem("ourSkyMeditationSeconds") || 0,
+  ),
 };
 
 const appEl = document.getElementById("app");
@@ -133,7 +478,7 @@ function skyPhase(hour, minute) {
 }
 
 function phaseQuote(phase) {
-  if (phase === "day") return "Every sky becomes more beautiful when I imagine you beneath it.";
+  if (phase === "day") return "لم يحن الوقت بعد للتأمل ";
   if (phase === "sunset") return "حين يهدأ الغروب، أسمع قلب المسافة وهو يقترب.";
   return "كل نجمة هنا تحفظ شيئًا لم نقله بعد.";
 }
@@ -209,13 +554,14 @@ function generateStars(count, seed, phase) {
         : Math.pow(rnd(), 2) * 1.0 + 0.18;
     const opacity =
       phase === "night"
-    ? 0.6 + rnd() * 0.4   // بدل 0.16 - 0.82 (بعضها ضعيف جدًا)
-    : 0.3 + rnd() * 0.4;
+        ? 0.6 + rnd() * 0.4 // بدل 0.16 - 0.82 (بعضها ضعيف جدًا)
+        : 0.3 + rnd() * 0.4;
     const delay = rnd() * 6;
     const twinkle = 2.8 + rnd() * 8.2;
     const roll = rnd();
     const memory = memories[i % memories.length];
-    const isMemory = phase !== "day" && (i % 13 === 0 || i % 19 === 0 || i % 27 === 0);
+    const isMemory =
+      phase !== "day" && (i % 13 === 0 || i % 19 === 0 || i % 27 === 0);
 
     let kind = "star";
     if (phase === "night" && roll > 0.945) kind = "planet";
@@ -320,6 +666,8 @@ function updateQuote(phase) {
 function openMemory(memory, starEl = null) {
   const isFirstTime = !discovered[memory.id];
 
+  console.log(memory);
+  console.log(memory.image);
   if (isFirstTime) {
     discovered[memory.id] = true;
     localStorage.setItem("discoveredMemories", JSON.stringify(discovered));
@@ -335,24 +683,36 @@ function openMemory(memory, starEl = null) {
     state.selectedMemory = memory;
 
     el.memoryKind.textContent =
-      memory.kind === "star" ? "نجمة" :
-      memory.kind === "planet" ? "كوكب" : "شهاب";
+      memory.kind === "star"
+        ? "نجمة"
+        : memory.kind === "planet"
+          ? "كوكب"
+          : "شهاب";
 
     el.memoryTitle.textContent = memory.title;
     el.memoryDate.textContent = memory.date;
     el.memoryText.textContent = memory.message;
 
     el.memoryIcon.textContent =
-      memory.type === "audio" ? "♫" :
-      memory.type === "video" ? "▶" :
-      memory.type === "image" ? "▣" : "✦";
+      memory.type === "audio"
+        ? "♫"
+        : memory.type === "video"
+          ? "▶"
+          : memory.type === "image"
+            ? "▣"
+            : "✦";
 
     if (memory.type === "audio") {
       el.memoryMedia.innerHTML = `
         <div style="text-align:center;">
           <div style="font-size:18px;margin-bottom:14px;">تسجيل صوتي</div>
           <div style="display:flex;align-items:end;justify-content:center;gap:4px;height:52px;">
-            ${Array.from({ length: 24 }).map((_, i) => `<span style="width:4px;height:${10 + (i % 6) * 6}px;border-radius:999px;background:rgba(255,255,255,.72);opacity:${0.25 + (i % 8) * 0.07}"></span>`).join("")}
+            ${Array.from({ length: 24 })
+              .map(
+                (_, i) =>
+                  `<span style="width:4px;height:${10 + (i % 6) * 6}px;border-radius:999px;background:rgba(255,255,255,.72);opacity:${0.25 + (i % 8) * 0.07}"></span>`,
+              )
+              .join("")}
           </div>
         </div>
       `;
@@ -364,12 +724,22 @@ function openMemory(memory, starEl = null) {
       `;
     } else if (memory.type === "image") {
       el.memoryMedia.innerHTML = `
-        <div style="font-size:18px;">صورة محفوظة هنا</div>
-      `;
+    <img
+      src="${memory.image}"
+      alt="${memory.title}"
+      style="
+        max-width:100%;
+        max-height:70vh;
+        width:auto;
+        height:auto;
+        display:block;
+        margin:auto;
+        border-radius:18px;
+      "
+    >
+  `;
     } else {
-      el.memoryMedia.innerHTML = `
-        <div style="font-size:18px;">رسالة نصية</div>
-      `;
+      el.memoryMedia.innerHTML = ``;
     }
 
     el.memoryModal.classList.add("show");
@@ -517,21 +887,23 @@ function pulseNearbyStars(clientX, clientY) {
   const px = clientX / window.innerWidth;
   const py = clientY / window.innerHeight;
 
-  document.querySelectorAll(".memory-star.memory, .memory-star.planet").forEach((star) => {
-    const wrap = star.parentElement;
-    if (!wrap) return;
+  document
+    .querySelectorAll(".memory-star.memory, .memory-star.planet")
+    .forEach((star) => {
+      const wrap = star.parentElement;
+      if (!wrap) return;
 
-    const x = parseFloat(wrap.style.left) / 100;
-    const y = parseFloat(wrap.style.top) / 100;
+      const x = parseFloat(wrap.style.left) / 100;
+      const y = parseFloat(wrap.style.top) / 100;
 
-    const dist = Math.hypot(x - px, y - py);
-    star.classList.toggle("is-touched", dist < 0.12);
-  });
+      const dist = Math.hypot(x - px, y - py);
+      star.classList.toggle("is-touched", dist < 0.12);
+    });
 }
 
 function tick() {
   const parts = getDamascusParts(new Date());
-  const phase =  'night' ; //skyPhase(parts.hour, parts.minute);
+  const phase = "night"; //skyPhase(parts.hour, parts.minute);
   const seed = parts.day + parts.month * 31 + parts.year;
 
   if (phase !== state.phase) {
@@ -551,12 +923,6 @@ function tick() {
   }
 }
 
-function toggleMeditation() {
-  state.meditation = !state.meditation;
-  el.meditationBtn.textContent = state.meditation ? "إيقاف التأمل" : "ابدأ التأمل";
-  el.meditationBtn.style.background = state.meditation ? "rgba(255,255,255,.18)" : "rgba(255,255,255,.10)";
-}
-
 function toggleAmbient() {
   state.ambient = !state.ambient;
   el.ambientBtn.textContent = `الصوت المحيط: ${state.ambient ? "تشغيل" : "إيقاف"}`;
@@ -564,7 +930,7 @@ function toggleAmbient() {
 
 function init() {
   const parts = getDamascusParts(new Date());
-  const phase = 'sunset' ;//skyPhase(parts.hour, parts.minute);
+  const phase = "night"; // skyPhase(parts.hour, parts.minute);
   state.phase = phase;
 
   setPhase(phase);
@@ -578,24 +944,32 @@ function init() {
     scheduleShootingStar();
   }
 
-  window.addEventListener("pointermove", (e) => {
-    updateCameraFromPointer(e.clientX, e.clientY);
-    spawnStardust(e.clientX, e.clientY);
-    pulseNearbyStars(e.clientX, e.clientY);
-  }, { passive: true });
+  window.addEventListener(
+    "pointermove",
+    (e) => {
+      updateCameraFromPointer(e.clientX, e.clientY);
+      spawnStardust(e.clientX, e.clientY);
+      pulseNearbyStars(e.clientX, e.clientY);
+    },
+    { passive: true },
+  );
 
-  window.addEventListener("touchmove", (e) => {
-    if (!e.touches || !e.touches[0]) return;
-    const t = e.touches[0];
-    updateCameraFromPointer(t.clientX, t.clientY);
-    spawnStardust(t.clientX, t.clientY);
-    pulseNearbyStars(t.clientX, t.clientY);
-  }, { passive: true });
+  window.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!e.touches || !e.touches[0]) return;
+      const t = e.touches[0];
+      updateCameraFromPointer(t.clientX, t.clientY);
+      spawnStardust(t.clientX, t.clientY);
+      pulseNearbyStars(t.clientX, t.clientY);
+    },
+    { passive: true },
+  );
 
   setInterval(tick, 1000);
 
- // el.meditationBtn.addEventListener("click", toggleMeditation);
- // el.ambientBtn.addEventListener("click", toggleAmbient);
+  // el.meditationBtn.addEventListener("click", toggleMeditation);
+  // el.ambientBtn.addEventListener("click", toggleAmbient);
 
   el.closeModal.addEventListener("click", closeMemory);
   el.closeModalBtn.addEventListener("click", closeMemory);

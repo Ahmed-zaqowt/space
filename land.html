@@ -2,87 +2,177 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Galaxy Login</title>
-    <link rel="stylesheet" href="css/land/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galaxy Login</title>
+  <link rel="stylesheet" href="css/land/style.css">
 </head>
 
 <body>
 
+
+
+
+
+  <div id="app">
+    <div id="choiceScreen" class="screen choice-screen show-choice">
+      <div class="choice-bg">
+        <div class="choice-stars choice-stars-1"></div>
+        <div class="choice-stars choice-stars-2"></div>
+
+        <div class="choice-content">
+          <h1 class="choice-title">اختر الرحلة</h1>
+          <p class="choice-subtitle">إما أن ترى السماء كما هي الآن، أو ترى الكون بعينيك</p>
+
+          <div class="choice-grid">
+            <a href="index.html"  class="choice-card" data-go="planetScreen">
+              <div class="choice-icon">🌌</div>
+              <h2>تأمل السماء</h2>
+              <p>سماء حية تتبدل مع الوقت الحقيقي والذكريات</p>
+            </a>
+
+            <button class="choice-card" data-go="detailScreen">
+              <div class="choice-icon">☀️</div>
+              <h2>لترى الكون بعيني</h2>
+              <p>شمس وكواكب، وكل كوكب يحمل شيئًا يشبهه فيك</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <div id="planetScreen" class="screen">
-        <div class="space">
+      <div class="space">
+        <div class="solar-system">
 
-          <div class="solar-system">
-
-            <div class="sun"></div>
-
-            <div class="orbit-wrap orbit1-wrap" style="--size:140px; --duration:80s; --label-angle:-25deg;">
-                <div class="orbit orbit1">
-                    <div class="planet moon" onclick="selectPlanet('القمر')"></div>
-                </div>
-                <div class="orbit-label">القمر</div>
+          <div class="sun"></div>
+          <div class="orbit-wrap orbit1-wrap" style="--size:140px; --duration:80s; --label-angle:-25deg;">
+            <div class="orbit orbit1">
+              <div class="planet moon" onclick="selectPlanet('القمر')"></div>
             </div>
+            <div class="orbit-label">القمر</div>
+          </div>
 
-            <div class="orbit-wrap orbit2-wrap" style="--size:220px; --duration:130s; --label-angle:-20deg;">
-                <div class="orbit orbit2">
-                    <div class="planet saturn">
-                        <div class="saturn-rings"></div>
-                    </div>
-                </div>
-                <div class="orbit-label">زحل</div>
+          <div class="orbit-wrap orbit2-wrap" style="--size:220px; --duration:130s; --label-angle:-20deg;">
+            <div class="orbit orbit2">
+              <div class="planet saturn" onclick="selectPlanet('زحل')">
+                <div class="saturn-rings"></div>
+              </div>
             </div>
+            <div class="orbit-label">زحل</div>
+          </div>
 
-            <div class="orbit-wrap orbit3-wrap" style="--size:300px; --duration:180s; --label-angle:-18deg;">
-                <div class="orbit orbit3">
-                    <div class="planet rita" onclick="selectPlanet('ريتا')"></div>
-                </div>
-                <div class="orbit-label">ريتا</div>
+          <div class="orbit-wrap orbit3-wrap" style="--size:300px; --duration:180s; --label-angle:-18deg;">
+            <div class="orbit orbit3">
+              <div class="planet mars" onclick="selectPlanet('المريخ')"></div>
             </div>
+            <div class="orbit-label">المريخ</div>
+          </div>
 
-            <div class="orbit-wrap orbit4-wrap" style="--size:380px; --duration:240s; --label-angle:-16deg;">
-                <div class="orbit orbit4">
-                    <div class="planet neptune" onclick="selectPlanet('نبتون')"></div>
-                </div>
-                <div class="orbit-label">نبتون</div>
+          <div class="orbit-wrap orbit4-wrap" style="--size:380px; --duration:240s; --label-angle:-16deg;">
+            <div class="orbit orbit4">
+              <div class="planet neptune" onclick="selectPlanet('نبتون')"></div>
             </div>
+            <div class="orbit-label">نبتون</div>
+          </div>
 
-            <div class="orbit-wrap orbit5-wrap" style="--size:460px; --duration:320s; --label-angle:-14deg;">
-                <div class="orbit orbit5">
-                    <div class="planet mars" onclick="selectPlanet('المريخ')"></div>
-                </div>
-                <div class="orbit-label">المريخ</div>
+          <div class="orbit-wrap orbit5-wrap" style="--size:460px; --duration:320s; --label-angle:-14deg;">
+            <div class="orbit orbit5">
+              <div class="planet rita" onclick="selectPlanet('ريتا')"></div>
             </div>
+            <div class="orbit-label">ريتا</div>
           </div>
 
         </div>
+      </div>
 
-        <div id="info" class="info"></div>
+      <div id="info" class="info"></div>
 
-        <div class="voice-area">
-            <div class="voice-player">
-                <div class="waves" id="waves">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+      <div class="voice-area">
+        <div class="voice-player">
+          <div class="waves" id="waves">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
 
-                <span class="voice-duration" id="duration">00:00</span>
+          <button class="play-btn" id="mainPlayBtn">▶</button>
 
-                <button class="play-btn" id="playBtn">▶</button>
+          <audio id="mainAudio" src="audio/main.mp3"></audio>
 
-                <audio id="voiceAudio" src="audio/a.mp3"></audio>
-            </div>
-
-            <p class="voice-text">
-                مهما ابتعدت المسافات، يبقى حضورك الأقرب إلى قلبي من أي شيء آخر.
-            </p>
+          <span class="voice-duration" id="mainDuration">00:00</span>
         </div>
+
+        <p class="voice-text">
+          مهما ابتعدت المسافات، يبقى حضورك الأقرب إلى قلبي من أي شيء آخر.
+        </p>
+      </div>
     </div>
 
-    <script src="js/land/app.js"></script>
+    <div id="detailScreen" class="screen">
+      <div class="detail-wrap">
+
+        <!-- الخلفية -->
+        <div class="stars stars-1"></div>
+        <div class="stars stars-2"></div>
+
+        <div class="meteor-layer">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <!-- المحتوى الرئيسي -->
+        <div class="detail-panel">
+
+          <!-- الكوكب -->
+          <div class="detail-planet-col">
+            <div class="planet-stage">
+
+              <div class="planet-stars planet-stars-1"></div>
+              <div class="planet-stars planet-stars-2"></div>
+
+              <div class="meteor meteor-1"></div>
+              <div class="meteor meteor-2"></div>
+              <div class="meteor meteor-3"></div>
+
+              <div id="detailPlanet" class="detail-planet"></div>
+
+            </div>
+          </div>
+
+          <div class="detail-text-col">
+
+            <h2 id="detailTitle" class="detail-title">اسم الكوكب</h2>
+            <p id="detailDesc" class="detail-desc"></p>
+
+            <div class="bottom-bar">
+
+              <div class="voice-box">
+                <div class="waves detail-waves">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+
+                <span class="detail-duration" id="duration">00:00</span>
+
+                <button class="voice-btn detail-playBtn" id="playBtn">▶</button>
+
+                <audio class="detail-audio" src=""></audio>
+              </div>
+
+              <button class="back-btn-galaxy" id="backBtn">
+                ← الرجوع للمجرات
+              </button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/land/app.js"></script>
 </body>
 
 </html>
