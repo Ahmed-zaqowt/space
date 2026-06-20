@@ -129,3 +129,31 @@ mainPlayBtn.addEventListener("click", async () => {
 mainAudio.addEventListener("ended", () => {
   mainPlayBtn.textContent = "▶";
 });
+const backToChoice = document.getElementById("backToChoice");
+
+if(backToChoice){
+
+  backToChoice.addEventListener("click", ()=>{
+
+    // إيقاف كل الأصوات
+    document.querySelectorAll("audio").forEach(audio=>{
+      audio.pause();
+      audio.currentTime = 0;
+    });
+
+    // إعادة الأزرار
+    mainPlayBtn.textContent = "▶";
+    detailPlayBtn.textContent = "▶";
+
+    // إيقاف الموجات
+    w.classList.remove("animating");
+    detailWaves.classList.remove("animating");
+
+    // إغلاق شاشة التفاصيل
+    app.classList.remove("show-detail");
+
+    // إظهار القائمة
+    choiceScreen.classList.add("show-choice");
+  });
+
+}

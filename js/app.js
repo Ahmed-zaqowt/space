@@ -61,7 +61,7 @@ const memories = [
     date: "2026-05-26",
     message:
       "إنتِ نور عيوني وراحة قلبي، وكل ما بتبعيتيلي كلمة بحس الدنيا كلها صارت أهدى وأحلى.",
-    image: "images/rit1.jpg",
+    image: "images/ri1.jpg",
   },
   {
     id: 7,
@@ -392,7 +392,6 @@ const memories = [
     image: "images/us.png"
   }
 ];
-
 const discovered = JSON.parse(
   localStorage.getItem("discoveredMemories") || "{}",
 );
@@ -508,6 +507,16 @@ function seededRandom(seed) {
   };
 }
 
+function shuffleWithSeed(array, seed) {
+  const rnd = seededRandom(seed);
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(rnd() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
 function setPhase(phase) {
   appEl.classList.toggle("is-day", phase === "day");
   appEl.classList.toggle("is-sunset", phase === "sunset");
@@ -554,14 +563,11 @@ function generateStars(count, seed, phase) {
         : Math.pow(rnd(), 2) * 1.0 + 0.18;
     const opacity =
       phase === "night"
-        ? 0.6 + rnd() * 0.4 // بدل 0.16 - 0.82 (بعضها ضعيف جدًا)
+        ? 0.6 + rnd() * 0.4
         : 0.3 + rnd() * 0.4;
     const delay = rnd() * 6;
     const twinkle = 2.8 + rnd() * 8.2;
     const roll = rnd();
-    const memory = memories[i % memories.length];
-    const isMemory =
-      phase !== "day" && (i % 13 === 0 || i % 19 === 0 || i % 27 === 0);
 
     let kind = "star";
     if (phase === "night" && roll > 0.945) kind = "planet";
@@ -576,8 +582,6 @@ function generateStars(count, seed, phase) {
       delay,
       twinkle,
       kind,
-      memory,
-      isMemory,
       layer: roll < 0.35 ? "back" : roll < 0.73 ? "mid" : "front",
     });
   }
@@ -597,9 +601,27 @@ function appendToLayer(layerName, node) {
   else el.starsMid.appendChild(node);
 }
 
+function buildMemoryAssignments(stars, seed) {
+  const shuffledMemories = shuffleWithSeed(memories, seed);
+  const assignments = new Map();
+
+  const planets = stars.filter((s) => s.kind === "planet");
+  const normalStars = stars.filter((s) => s.kind === "star");
+  const candidates = [...planets, ...normalStars];
+
+  const limit = Math.min(shuffledMemories.length, candidates.length);
+  for (let i = 0; i < limit; i++) {
+    assignments.set(candidates[i].id, shuffledMemories[i]);
+  }
+
+  return assignments;
+}
+
 function renderStars(phase, seed) {
   const count = phase === "night" ? 200 : phase === "sunset" ? 110 : 55;
   const stars = generateStars(count, seed, phase);
+  const memoryAssignments = buildMemoryAssignments(stars, seed);
+
   clearLayers();
 
   stars.forEach((s) => {
@@ -619,27 +641,38 @@ function renderStars(phase, seed) {
       return;
     }
 
+    const memory = memoryAssignments.get(s.id) || null;
+
     if (s.kind === "planet") {
       const planet = document.createElement("button");
+      planet.type = "button";
       planet.className = "memory-star planet";
       planet.style.width = `${10 + s.size * 2}px`;
       planet.style.height = `${10 + s.size * 2}px`;
       planet.style.opacity = s.opacity;
       planet.style.animationDelay = `${s.delay}s`;
-      planet.addEventListener("click", () => openMemory(s.memory, planet));
+
+      if (memory) {
+        planet.dataset.memoryId = String(memory.id);
+        planet.addEventListener("click", () => openMemory(memory, planet));
+      }
+
       wrap.appendChild(planet);
       appendToLayer(s.layer, wrap);
       return;
     }
 
-    if (s.isMemory) {
+    if (memory) {
       const star = document.createElement("button");
+      star.type = "button";
       star.className = "memory-star memory";
       star.style.width = "7px";
       star.style.height = "7px";
       star.style.opacity = s.opacity;
       star.style.animationDelay = `${s.delay}s`;
-      star.addEventListener("click", () => openMemory(s.memory, star));
+      star.dataset.memoryId = String(memory.id);
+      star.addEventListener("click", () => openMemory(memory, star));
+
       wrap.appendChild(star);
       appendToLayer(s.layer, wrap);
       return;
@@ -666,8 +699,6 @@ function updateQuote(phase) {
 function openMemory(memory, starEl = null) {
   const isFirstTime = !discovered[memory.id];
 
-  console.log(memory);
-  console.log(memory.image);
   if (isFirstTime) {
     discovered[memory.id] = true;
     localStorage.setItem("discoveredMemories", JSON.stringify(discovered));
@@ -724,20 +755,20 @@ function openMemory(memory, starEl = null) {
       `;
     } else if (memory.type === "image") {
       el.memoryMedia.innerHTML = `
-    <img
-      src="${memory.image}"
-      alt="${memory.title}"
-      style="
-        max-width:100%;
-        max-height:70vh;
-        width:auto;
-        height:auto;
-        display:block;
-        margin:auto;
-        border-radius:18px;
-      "
-    >
-  `;
+        <img
+          src="${memory.image}"
+          alt="${memory.title}"
+          style="
+            max-width:100%;
+            max-height:70vh;
+            width:auto;
+            height:auto;
+            display:block;
+            margin:auto;
+            border-radius:18px;
+          "
+        >
+      `;
     } else {
       el.memoryMedia.innerHTML = ``;
     }
@@ -903,7 +934,7 @@ function pulseNearbyStars(clientX, clientY) {
 
 function tick() {
   const parts = getDamascusParts(new Date());
-  const phase = "night"; //skyPhase(parts.hour, parts.minute);
+  const phase = "night"; // skyPhase(parts.hour, parts.minute)
   const seed = parts.day + parts.month * 31 + parts.year;
 
   if (phase !== state.phase) {
@@ -923,14 +954,9 @@ function tick() {
   }
 }
 
-function toggleAmbient() {
-  state.ambient = !state.ambient;
-  el.ambientBtn.textContent = `الصوت المحيط: ${state.ambient ? "تشغيل" : "إيقاف"}`;
-}
-
 function init() {
   const parts = getDamascusParts(new Date());
-  const phase = "night"; // skyPhase(parts.hour, parts.minute);
+  const phase = "night"; // skyPhase(parts.hour, parts.minute)
   state.phase = phase;
 
   setPhase(phase);
@@ -967,9 +993,6 @@ function init() {
   );
 
   setInterval(tick, 1000);
-
-  // el.meditationBtn.addEventListener("click", toggleMeditation);
-  // el.ambientBtn.addEventListener("click", toggleAmbient);
 
   el.closeModal.addEventListener("click", closeMemory);
   el.closeModalBtn.addEventListener("click", closeMemory);
